@@ -28,3 +28,48 @@ select*from Employee_2119110353
 
 select*from Department_2119110353
 
+--Tạo store
+--1.Insert
+go
+create proc spInsertEmployee
+@IdEmployee nvarchar(60), 
+@NameEmp nvarchar(255), 
+@PlaceBirth nvarchar(255),
+@IdDepartment nvarchar(60),
+@DateBirth date, 
+@Gender int
+as
+begin
+    insert Employee_2119110353(IdEmployee,NameEmp,DateBirth,Gender,PlaceBirth,IdDepartment) values(@IdEmployee,@NameEmp,@DateBirth,@Gender,@PlaceBirth,@IdDepartment)
+end
+
+--2.Update
+go
+create proc spUpdateEmployee
+@IdEmployee nvarchar(60), 
+@NameEmp nvarchar(255), 
+@PlaceBirth nvarchar(255),
+@IdDepartment nvarchar(60),
+@DateBirth date, 
+@Gender int
+as
+begin
+    update Employee_2119110353
+    set
+        IdEmployee = @IdEmployee,
+        NameEmp = @NameEmp,
+        DateBirth = @DateBirth,
+		Gender=@Gender,
+		PlaceBirth=@PlaceBirth,
+		IdDepartment=@IdDepartment
+    where IdEmployee = @IdEmployee
+end
+
+--3.Delete
+go
+create proc spDeleteEmployee
+@IdEmployee int
+as
+begin
+    delete Employee_2119110353 where IdEmployee = @IdEmployee
+end
