@@ -73,3 +73,10 @@ as
 begin
     delete Employee_2119110353 where IdEmployee = @IdEmployee
 end
+
+--4.Lấy ds nhan vien
+go
+create proc Select_Employee 
+as 
+select * from Employee_2119110353
+

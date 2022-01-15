@@ -19,7 +19,13 @@ namespace Cau1.DAL
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from Employee_2119110353", conn);
+            //SqlCommand cmd = new SqlCommand("select * from Employee_2119110353", conn);
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "Select_Employee";
+            cmd.CommandType = CommandType.StoredProcedure;
+
             SqlDataReader reader = cmd.ExecuteReader();
             List<EmployeeDAO> lstEmp = new List<EmployeeDAO>();
             DepartmentDAL dep = new DepartmentDAL();
@@ -67,7 +73,7 @@ namespace Cau1.DAL
                 //đóng chuỗi kết nối.
                 conn.Close();
 
-                Console.WriteLine("Xoa hoc sinh thanh cong !!!");
+                Console.WriteLine("Xoa thanh cong !!!");
             }
             catch (Exception e)
             {
